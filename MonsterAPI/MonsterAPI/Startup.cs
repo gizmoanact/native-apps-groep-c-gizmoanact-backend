@@ -89,7 +89,7 @@ namespace MonsterAPI
             services
                 .AddScoped<IAlbumRepository, AlbumRepository>()
                 .AddScoped<IArtistRepository, ArtistRepository>()
-                .AddScoped<ILiedjeRepository, LiedjeRepository>();
+                .AddScoped<ILiedjeRepository, ILiedjeRepository>();
 
             #endregion
 
@@ -98,7 +98,7 @@ namespace MonsterAPI
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ApplicationDBContext context,
-            UserManager<IdentityUser> um)
+           )
         {
             if (env.IsDevelopment())
             {
@@ -110,7 +110,7 @@ namespace MonsterAPI
             context.Database.EnsureCreated();
 
             //Seed Data
-            new DataInit(context, um).SeedData();
+            new DataInit(context).SeedData();
 
             app.UseHttpsRedirection();
             app.UseAuthentication();
