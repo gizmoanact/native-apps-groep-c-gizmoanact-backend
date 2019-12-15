@@ -42,11 +42,11 @@ namespace MonsterAPI
             services.AddDbContext<ApplicationDBContext>(options =>
             {
                 //mac connectionstring
-                options.UseSqlServer(Configuration.GetConnectionString("MacConnection"));
+                //options.UseSqlServer(Configuration.GetConnectionString("MacConnection"));
                 //Docker connectionstring
                 //options.UseSqlServer(Configuration.GetConnectionString("DockerConnection"));
                 //Windows connectionstring
-                //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
             #endregion
 
@@ -89,7 +89,7 @@ namespace MonsterAPI
             services
                 .AddScoped<IAlbumRepository, AlbumRepository>()
                 .AddScoped<IArtistRepository, ArtistRepository>()
-                .AddScoped<ILiedjeRepository, ILiedjeRepository>();
+                .AddScoped<ILiedjeRepository, LiedjeRepository>();
 
             #endregion
 
@@ -97,7 +97,7 @@ namespace MonsterAPI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ApplicationDBContext context,
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ApplicationDBContext context
            )
         {
             if (env.IsDevelopment())
@@ -124,3 +124,4 @@ namespace MonsterAPI
         }
     }
 }
+#endregion
