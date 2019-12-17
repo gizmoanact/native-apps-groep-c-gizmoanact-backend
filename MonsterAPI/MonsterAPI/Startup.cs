@@ -42,11 +42,11 @@ namespace MonsterAPI
             services.AddDbContext<ApplicationDBContext>(options =>
             {
                 //mac connectionstring
-                //options.UseSqlServer(Configuration.GetConnectionString("MacConnection"));
+                options.UseSqlServer(Configuration.GetConnectionString("MacConnection"));
                 //Docker connectionstring
                 //options.UseSqlServer(Configuration.GetConnectionString("DockerConnection"));
                 //Windows connectionstring
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
             #endregion
 
