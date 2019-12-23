@@ -49,7 +49,7 @@ namespace MonsterAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Liedje>> GeefAlleClients()
+        public ActionResult<IEnumerable<Liedje>> GeefalleLiedjes()
         {
             try
             {
@@ -73,6 +73,15 @@ namespace MonsterAPI.Controllers
         public IActionResult UpdateMenu(Liedje liedje)
         {
             _liedjeRepository.Update(liedje);
+            return Ok();
+        }
+
+
+        [Route("geefVoorstel/{idLied}")]
+        [HttpPut]
+        public IActionResult geefVoorstel(long id)
+        {
+            _liedjeRepository.GetById(id);
             return Ok();
         }
 

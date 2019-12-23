@@ -17,13 +17,15 @@ namespace MonsterAPI.Controllers
             _artistRepository = artistRepository;
         }
 
+        [Route("add")]
         [HttpPost]
-        public IActionResult createAlbum(Artist artist)
+        public IActionResult createArtist(Artist artist)
         { //Geef AterlierDTO en controleer de HTTPPut
             _artistRepository.Add(artist);
             _artistRepository.saveChanges();
             return Ok();
         }
+
         [Route("{id}")]
         [HttpDelete]
         public ActionResult<Artist> DeleteAlbum(int id)
@@ -68,12 +70,12 @@ namespace MonsterAPI.Controllers
             return _artistRepository.GetById(id);
         }
 
-        [Route("{album}")]
+        [Route("put/{artist}")]
         [HttpPut]
-        public IActionResult UpdateMenu(Artist artist)
+        public ActionResult<Artist> UpadateArtist(Artist artist)
         {
             _artistRepository.Update(artist);
-            return Ok();
+            return artist;
         }
 
 

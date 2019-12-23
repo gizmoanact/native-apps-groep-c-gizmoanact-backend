@@ -87,7 +87,7 @@ namespace MonsterAPI
 
             #region Dependency Injection
             services
-                .AddScoped<IAlbumRepository, AlbumRepository>()
+               // .AddScoped<IAlbumRepository, AlbumRepository>()
                 .AddScoped<IArtistRepository, ArtistRepository>()
                 .AddScoped<ILiedjeRepository, LiedjeRepository>();
 
